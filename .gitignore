@@ -24,3 +24,11 @@ CognitiveServices.js
 CognitiveServices.js.map
 *.css
 /test/uploads
+.idea/BotFramework-WebChat.iml
+.idea/markdown-navigator.xml
+.idea/misc.xml
+.idea/modules.xml
+.idea/typescript-compiler.xml
+.idea/vcs.xml
+.idea/workspace.xml
+.idea/markdown-navigator/profiles_settings.xml
