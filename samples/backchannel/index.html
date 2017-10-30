@@ -75,19 +75,21 @@
 
       const botConnection = new BotChat.DirectLine({
         domain: params['domain'],
-        secret: params['s'],
+        secret: 'NLVjf7a9B7k.cwA.w6Y.pSuHXU3rUmto9X9ddo7GvEFr7VvEyNIYanUtdpRgDqc',
         token: params['t'],
         webSocket: params['webSocket'] && params['webSocket'] === 'true' // defaults to true
       });
-
+      var userid = localStorage.getItem("userid") || Math.random() * 10000000;
+      localStorage.setItem("userid", userid);
       BotChat.App({
-        bot: bot,
-        botConnection: botConnection,
-        user: user
+          bot: {id: 'teacher-server-test'},
+          botConnection: botConnection,
+          user: {id: userid},
       }, document.getElementById('BotChatGoesHere'));
 
       botConnection.activity$
         .filter(function (activity) {
+            console.log('text good')
           return activity.type === 'event' && activity.name === 'changeBackground';
         })
         .subscribe(function (activity) {

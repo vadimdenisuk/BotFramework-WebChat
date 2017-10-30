@@ -41,6 +41,8 @@
     <script type="text/babel">
       const params = BotChat.queryParams(location.search);
 
+      console.log(params);
+
       window.botchatDebug = params.debug && params.debug === 'true';
 
       ReactDOM.render(

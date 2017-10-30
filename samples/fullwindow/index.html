@@ -14,55 +14,35 @@
     * botid, botname = id (and optionally name) of bot
 -->
 <html>
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
     <title>Bot Chat</title>
 
-    <link href="../../botchat.css" rel="stylesheet" />
-    <link href="../../botchat-fullwindow.css" rel="stylesheet" />
+    <link href="../../botchat.css" rel="stylesheet"/>
+    <link href="../../botchat-fullwindow.css" rel="stylesheet"/>
 
     <style>
-      html, body {
-        height: 100%;
-        margin: 0;
-        overflow: hidden;
-        padding: 0;
-      }
-    </style>
-  </head>
-  <body>
-    <div id="BotChatGoesHere"></div>
-    <script src="../../botchat.js"></script>
-    <script>
-      const params = BotChat.queryParams(location.search);
-
-      const user = {
-        id: params['userid'] || 'userid',
-        name: params['username'] || 'username'
-      };
-
-      const bot = {
-        id: params['botid'] || 'botid',
-        name: params['botname'] || 'botname'
-      };
-
-      window['botchatDebug'] = params['debug'] && params['debug'] === 'true';
-
-      BotChat.App({
-        bot: bot,
-        locale: params['locale'],
-        resize: 'window',
-        // sendTyping: true,    // defaults to false. set to true to send 'typing' activities to bot (and other users) when user is typing
-        user: user,
-
-        directLine: {
-          secret: params['s'],
-          token: params['t'],
-          domain: params['domain'],
-          webSocket: params['webSocket'] && params['webSocket'] === 'true' // defaults to true
+        html, body {
+            height: 100%;
+            margin: 0;
+            overflow: hidden;
+            padding: 0;
         }
-      }, document.getElementById('BotChatGoesHere'));
-    </script>
-  </body>
+    </style>
+</head>
+<body>
+<div id="BotChatGoesHere"></div>
+<script src="../../botchat.js"></script>
+<script>
+    var userid = localStorage.getItem("userid") || Math.random() * 10000000;
+    localStorage.setItem("userid", userid);
+    BotChat.App({
+        directLine: {secret: 'NLVjf7a9B7k.cwA.w6Y.pSuHXU3rUmto9X9ddo7GvEFr7VvEyNIYanUtdpRgDqc'},
+        user: {id: userid},
+        bot: {id: 'teacher-server-test'},
+        resize: 'detect'
+    }, document.getElementById('BotChatGoesHere'));
+</script>
+</body>
 </html>
