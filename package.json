@@ -31,6 +31,7 @@
     "@types/react": "15.0.38",
     "botframework-directlinejs": "0.9.11",
     "core-js": "2.4.1",
+    "lodash": "^4.17.4",
     "markdown-it": "8.3.1",
     "microsoft-adaptivecards": "0.6.1",
     "microsoft-speech-browser-sdk": "0.0.1",
@@ -43,6 +44,7 @@
     "tslib": "1.7.1"
   },
   "devDependencies": {
+    "@types/lodash": "^4.14.84",
     "@types/body-parser": "0.0.33",
     "@types/chai": "3.4.34",
     "@types/chai-subset": "1.0.29",

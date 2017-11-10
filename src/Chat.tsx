@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { findDOMNode } from 'react-dom';
+import {findDOMNode, render} from 'react-dom';
 
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
@@ -30,6 +30,9 @@ export interface ChatProps {
 import { History } from './History';
 import { MessagePane } from './MessagePane';
 import { Shell, ShellFunctions } from './Shell';
+import {Filters} from "./Filters";
+import {type} from "os";
+
 
 export class Chat extends React.Component<ChatProps, {}> {
 
@@ -153,7 +156,7 @@ export class Chat extends React.Component<ChatProps, {}> {
             this.selectedActivitySubscription = this.props.selectedActivity.subscribe(activityOrID => {
                 this.store.dispatch<ChatActions>({
                     type: 'Select_Activity',
-                    selectedActivity: activityOrID.activity || this.store.getState().history.activities.find(activity => activity.id === activityOrID.id)
+                    selectedActivity: activityOrID.activity || this.store.getState().history.activities.find((activity: any) => activity.id === activityOrID.id)
                 });
             });
         }
@@ -180,8 +183,10 @@ export class Chat extends React.Component<ChatProps, {}> {
 
         // only render real stuff after we know our dimensions
         let header: JSX.Element;
+        console.log("state REDUX:" + state);
         if (state.format.options.showHeader) header =
             <div className="wc-header">
+                <Filters />
                 <span>{ state.format.strings.title }</span>
             </div>;
 

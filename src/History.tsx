@@ -163,7 +163,22 @@ export const History = connect(
         // passed down to HistoryView
         format: state.format,
         size: state.size,
-        activities: state.history.activities,
+        activities: state.history.activities.filter((activity: any) => {
+            if(state.shell.selectedUserId)
+            {
+                let result = false;
+                try {
+                   result = activity.attachments[0].content.userid === state.shell.selectedUserId;
+                }
+                catch (e) {
+
+                }
+                return result;
+            }
+            else {
+                return true;
+            }
+        }),
         // only used to create helper functions below
         connectionSelectedActivity: state.connection.selectedActivity,
         selectedActivity: state.history.selectedActivity,
