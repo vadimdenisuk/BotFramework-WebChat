@@ -6,12 +6,15 @@ import {uniq} from 'lodash';
 class FiltersView extends React.Component<any,any> {
     render() {
         return (
-            <select value={this.props.selectedUserId} onChange={event => this.props.onUserSelect(event.target.value)}>
-                <option value={""}>All</option>
-                {this.props.userIds.map( (id: any, index: number) =>
-                    <option key={index} value={id}>{id}</option>
-                )}
-            </select>
+            <div className={'styled-select blue semi-square'}>
+                <select value={this.props.selectedUserId} onChange={event => this.props.onUserSelect(event.target.value)}>
+                    <option disabled>Selected user:</option>
+                    <option value={""}>All</option>
+                    {this.props.userIds.map( (id: any, index: number) =>
+                        <option key={index} value={id}>{id}</option>
+                    )}
+                </select>
+            </div>
             )
     }
 }
